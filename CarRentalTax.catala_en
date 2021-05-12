@@ -1,0 +1,128 @@
+## Philadelphia Vehicle Rental Tax
+
+
+
+### [§ 19-3301.  Definitions.]
+   In this Chapter the following words and phrases shall have the meanings given to them in this Section unless the context clearly requires otherwise:
+
+
+   (1)   Department. The Department of Revenue.
+
+
+   (2)   Rental Vehicle. A private passenger motor vehicle designed to transport fifteen or fewer passengers, or a truck,
+            trailer or semitrailer used in the transportation of property other than commercial freight, 
+            that is rented without a driver, 
+            is part of a fleet of five or more rental vehicles that are used for that purpose and owned or leased by the same person or entity, 
+            and is rented for a period of twenty-nine or fewer consecutive days.
+
+```catala
+declaration enumeration Vehicle:
+-- FewerThanFifteenPassengers
+-- Truck
+-- Trailer
+-- SemiTrailer
+-- Other
+
+declaration structure Rental:
+    data vehicle content Vehicle
+    data has_driver content boolean
+    data price content money
+
+scope VehicleRentalTax:
+    definition is_taxable_rental equals ((rental.vehicle != Other) and (rental.has_driver = false))
+```
+
+
+   (3)   Vehicle Rental Company. Any business entity engaged in the business of renting motor vehicles in the Commonwealth of Pennsylvania.
+
+
+   (4)   Purchase Price. The full consideration paid or delivered or promised to be paid to the Vehicle Rental Company for the vehicle rental, including, but not limited to, charges for vehicle use, excess mileage, pick up and drop off, vehicle damage waiver, insurance, child car seat, car top carrier and cellular phone, but excluding charges for State and local taxes.
+
+
+
+### [§ 19-3302.  Imposition and Rate of the Vehicle Rental Tax.]
+
+   (1)   There is hereby imposed an excise tax on the rental of a Rental Vehicle in the City of Philadelphia. For purposes of this Section, the "rental of a Rental Vehicle in the City of Philadelphia" occurs whenever a renter takes possession of a Rental Vehicle in the City of Philadelphia.
+
+```catala
+declaration scope VehicleRentalTax:
+    context rental content Rental
+    context tax_amount content money
+    context is_taxable_rental content boolean
+```
+
+
+   (2)   The vehicle rental tax shall be collected by a Vehicle Rental Company at the time a Rental Vehicle is rented by that Vehicle Rental Company, and shall be remitted by the Vehicle Rental Company to the City in accordance with rules and regulations to be promulgated by the Department.
+
+
+   (3)   The rate of tax shall be two percent (2%) of the Purchase Price of the rental.
+
+```catala
+scope VehicleRentalTax:
+    definition tax_amount equals $0
+    definition tax_amount under condition is_taxable_rental
+    consequence equals rental.price *$ 2 %
+ ```
+
+
+### [§ 19-3303.  Deposit and Distribution of Tax Revenues.]
+
+   (1)   The Department shall collect the tax from vehicle rental companies and deposit the revenues received from the tax in a special fund established for purposes set forth herein.
+
+
+   (2)   The special fund established under subsection (1) shall be used solely for the payment of the costs of capital projects, which costs may include, without limitation, lease payments or service agreements with authorities for capital projects and debt service on bonds issued for capital projects.
+
+
+
+
+### [§ 19-3304.  Reports, Returns, Payment and Collection of Tax.]
+   (1)   All taxes collected by any Vehicle Rental Company in accordance with this Chapter shall constitute a trust fund for the City and such trust shall be enforceable against such person and any person receiving any part of such find without consideration, or knowing that the Vehicle Rental Company is committing a breach of trust; provided, however, that any person receiving payment of a lawful obligation of the Vehicle Rental Company from such fund shall be presumed to have received the same in good faith and without any knowledge of the breach of trust.
+
+
+   (2)   Every Vehicle Rental Company shall collect the tax imposed by this Chapter from the renter of the vehicle at the time the Rental Vehicle is rented, and shall pay it over to the City as provided hereinafter. A Vehicle Rental Company, if it fails to collect the tax or pay it to the City when due, shall be liable to the City for the payment of the tax, including penalties and interest as provided in Section 19-509.
+
+
+   (3)   Every report and return shall be made upon a form furnished by the Department.
+
+
+   (4)   Every Vehicle Rental Company shall transmit to the Department, on or before the fifteen (15th) day of each month, a return for the month preceding the month in which the return is made, which return shall report the amount of consideration received for the transactions during the month for which the return is made, the amount of tax due from the Vehicle Rental Company for that month, and such other information as the Department may require.
+
+
+   (5)   Every Vehicle Rental Company, at the time of filing every return required by this Section, shall compute and pay to the Department the taxes shown as due on the return for the period for which the return is made.
+
+
+   (6)   Every Vehicle Rental Company shall maintain records, which shall be made available to the Department upon its request, which shall include, but not be limited to, the number of rental transactions on a daily or weekly basis, the rate(s) charged for each rental, the consideration received from all transactions during the month for which each return is made, as well as such other information as the Department may require.
+
+
+   (7)   If a 656 Vehicle Rental Company enters the business of renting vehicles subsequent to the effective date of this Chapter, the first return shall be filed on the fifteenth (15th) day of the first month subsequent thereto. The first return and tax payment due shall be for all transactions occurring during the preceding month based upon the actual taxable transactions during the preceding month.
+
+
+   (8)   The Department is authorized to promulgate rules and regulations governing the collection, administration and enforcement of the provisions of this Chapter.
+
+
+### [Tests]
+
+```catala
+declaration scope TestDefaultTax:
+    context tax_computation scope VehicleRentalTax
+
+scope TestDefaultTax:
+    definition tax_computation.rental equals Rental {
+        -- vehicle: FewerThanFifteenPassengers
+        -- has_driver: false 
+        -- price: $1000
+    }
+    # Nit to pick - 'equals' in an assignment operator, but '=' is an equality operator.
+    assertion tax_computation.tax_amount = $20
+
+declaration scope TestTaxWithDriver:
+    context tax_computation scope VehicleRentalTax
+
+scope TestTaxWithDriver:
+    definition tax_computation.rental equals Rental {
+        -- vehicle: FewerThanFifteenPassengers
+        -- has_driver: true 
+        -- price: $1000
+    }
+    assertion tax_computation.tax_amount = $0
+```

@@ -1,8 +1,10 @@
 ## Hello Catala
 
+A tiny example of a Catala program.
+
 ### [Article 1]
 
-An article might start with regular text, like this. Our first code block will come next.
+Code blocks live inside of Articles.
 
 ```catala
 declaration scope Say100:
@@ -12,14 +14,4 @@ scope Say100:
     definition a_number equals 100
 ```
 
-### [Article 2]
-
-```catala 
-scope Say100:
-    definition a_number equals 90
-```
-
-### Next up
-
-That's a complete, if very simple, example of writing and running a Catala program. Check out the next tutorial for a more detailed look at how to describe 
-a real statute in a Catala program.
+And that is the end of this program!

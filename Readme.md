@@ -110,18 +110,42 @@ The lines "scope Say100" and "definition a_number equals 100" defines the data "
 
 Now we have a complete Catala program. You can compile to html again, with "catala --language=en Html hello.catala_en".
 
-Or you can tell Catala to figure out the value of a scope the program defines. Run "catala -s Say100 --language=en Interpret hello.catala_en". You should see
-messages that "a_number = 100".
+Or you can tell Catala to figure out the value of a scope the program defines. Run
+
+```
+$ catala -s Say100 --language=en Interpret hello.catala_en
+
+```
+
+You should see messages that "a_number = 100".
 
 In this modified command, note that "Html" has been replaced with "Interpret". This means we want the compiler to actually run the code we've written.
 And we need to tell the compiler which scope we want it to try to execute. In this simple example, there is only one scope.
 
-## Run it!
+## A More Complicated Example
 
-Now we can actually run some code!
+Our `hello` program demonstrates just about the simplest Catala program there can be.
 
-## I Wish...
+The `CarRentalTax.catala_en` example in this repository is one step of complexity higher. It demonstrates a few more pieces of the sytax of the Catala language. In that example, you can see that one area where Catala shines is the ability to define the parts of the thing you're trying to evaluate, like a tax, in different places in the text, unified by the declaration of single "scope". The compiler is able to unify parts of scope that are declared in different places, even if the scope is initially defined _after_ somewhere in the text it is used. This way, Catala lets us write the code right next to statutory language, even though statutory language is constantly backtracking or referring to provisions that come later.
 
-Automate testing with fuzzing or property-based testing
+## I like ...
 
-Explain answers.
+There are some things that I like a lot about Catala.
+
+The process of writing code to reflect the statute forces you to think really carefully about each piece of the statute. Granted, one can think carefully about a statute the old-fashioned way too, but help is still useful.
+
+The literate style is very compelling. Based on my experience writing code evaluating criminal records for expungements, I understand how useful it is to have the authoritative statutory text in the same place as code describing it. I'm a little skeptical that many lawyers will be willing to understand the code themselves, but even for communications between non-programmer lawyers and programmers, having the text and law in the same place is very valuable.
+
+## I Wish ...
+
+There are also a few areas where I hope to see Catala evolve.
+
+I'm still struggling with understanding how to use the syntax, as its very different from anything I've used before. Even after reading the paper introducing the default logic that inspired Catala, I still don't really understand the basis for some of the language constructs. Like what _is_ a scope, really? It's _like_ a function, but its not one, exactly, it seems. I think. This is an area where I may just not have put in the work yet, though, and as a new project, there aren't millions of blog posts and books about Catala's design.
+
+One of the areas where encoding law seems to have a lot of potential is in testing. Already in Catala we define the parameters that a law acts on. (like a person's income and family size). I'd like to be able to automatically generate test cases that fully explore the possible domain of inputes. These concepts of "fuzzing" or "property-based" testing are pretty widely used in other programming languages, so it would be great to use them in Catala. (I suppose one could use Catala to compile to ocaml, and then use ocaml tools to generate test cases for the generated code, but that's pretty indirect. Could it be possible to use a scope to call a collection of other scopes?)
+
+It would also be useful for Catala's interpreter to be better able to explain its answers. _Why_ was a person's income tax $400? _Why not_ $0, or _what would need to happen_ to get to $0? This requirement of 'explainability' is really difficult, but also really important. Somehow a person using this system needs access to not just a result, but a blob of information that records how the result was achieved and enables identifying paths-not-taken in the chain of decision-making. A lawyer's response to a question about the applicability of a rule will always include this kind of why- and what-if interaction. Law-as-code needs to be able to offer that transpency and some mechanism for interactivity as well.
+
+## Next ...
+
+It will be very interesting to try out writing a Catala program with a non-programmer lawyer, perhaps to evaluate some local ordinance. I'm eager to see what it's like to introduce literate programming and Catala's logic to others.
