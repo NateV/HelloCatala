@@ -84,21 +84,21 @@ At this point, if there are no errors, you will have a new `hello.html` file in 
 
 Let's write some code. Add an Article to your program by adding a heading and a square-bracket-enclosed title for the article, such as `[Article 1]`.
 
-```
+````
 
 ### [Article 1]
 
 An article might start with regular text, like this. Our first code block will come next.
 
-\`\`\`catala
+```catala
 declaration scope Say100:
-context a_number content integer
+    context a_number content integer
 
 scope Say100:
-definition a_number equals 100
-\`\`\`
-
+    definition a_number equals 100
 ```
+
+````
 
 The line "declaration scope Say100" creates a "scope" called "Say100". A scope is something like a function in other programming languages. Its an area bounding
 data and rules that apply to the data in that scope.
