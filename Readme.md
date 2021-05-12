@@ -36,7 +36,7 @@ I have never used Ocaml or Opam, so I struggled with this a little. I wasn't abl
 
 Let's create a very simple Catala program called "hello". This is effectively a classic "Hello World!" program.
 
-**You should think of the whole document as the "program".** Just like any other programming language, Catala enforces strict rules in the syntax of the "code" sections. Unlike other "literate programming" systems, it also enforces rules about the syntax of the non-code sections. For example, "/" and "'" characters are not allowed in the text sections. This means you can't include [hyperlinks](https://en.wikipedia.org/wiki/Hyperlink) or markdown-style `code highlighting`. Also, code blocks are only allowed under `### [Article n]` headings. The whole document, including the sections that are just text, is your program, and has to follow Catala's rules.
+**You should think of the whole document as the "program".** Just like any other programming language, Catala enforces strict rules in the syntax of the "code" sections. It also enforces rules about the syntax of the non-code sections. For example, "/" and "'" characters are not allowed in the text sections. This means you can't include [hyperlinks](https://en.wikipedia.org/wiki/Hyperlink) or markdown-style `code highlighting`. Also, code blocks are only allowed under `### [Article n]` headings. The whole document, including the sections that are just text, is your program, and has to follow Catala's rules.
 
 Go ahead and create a directory for our project in an empty text file. The text file can be called "hello.catala_en". The extension indicates this is a "catala"
 file written in English.
