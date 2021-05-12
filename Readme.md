@@ -4,9 +4,7 @@ Getting started with the Catala system for programming statutes
 
 ## Motivation
 
-At the risk of trivializing a challenge that's fundamental to human society...law is _confusing_. Perhaps we invented it to offer some predictability and transparency to individuals asking themselves, "What will happen to me if I do X?" and "Is that fair?" I think its reasonable to say that despite working on legal systems for quite a few years, humanity hasn't completely solved this problem. In the United States, "the law" is an ever-shifting mass of
-procedures, statutes, precedents, traditions, and more. Even experts (or perhaps especially experts) often disagree about the meanings of legal rules and how to
-apply legal rules to factual situations.
+At the risk of trivializing a challenge that's fundamental to human society...law is _confusing_. Perhaps we invented law to offer some predictability and transparency to individuals asking themselves, "What will happen to me if I do X?" and "Is that fair?" We have worked on the problem for quite a few years, but I think its fair to say that humanity hasn't completely solved the problem. In the United States, "the law" is an ever-shifting mass of procedures, statutes, precedents, traditions, and more. Even experts (or perhaps especially experts) often disagree about the meanings of legal rules and how to apply legal rules to factual situations.
 
 The field of _Computational Law_ proposes that at least some parts of the legal system might be encoded in software. A computer might be a useful tool for determining how certain rules apply to certain facts. Where a human might get confused, or just bored, and make mistakes when following complicated rules of logic to a conclusion, a computer might excel. Software-defined legal rules could also make it possible to thoroughly test legal rules. We could even formally, mathematically prove that they have the expected results under all the factual situations that might arise. Wouldn't that be neat?
 
