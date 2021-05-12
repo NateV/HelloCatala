@@ -12,23 +12,6 @@ scope Say100:
     definition a_number equals 100
 ```
 
-The line "declaration scope Say100" creates a "scope" called "Say100". A scope is something like a function in other programming languages. Its an area bounding 
-data and rules that apply to the data in that scope.
-
-"context a_number content integer" says that our Say100 scope includes a piece of data called "a_number". "a_number" will hold an integer, when we use this 
-scope later.
-
-The lines "scope Say100" and "definition a_number equals 100" defines the data "a_number" inside the Say100 scope. These lines set the value of the Say100 scope's "a_number" to the integer 100.
-
-Now we have a complete Catala program. You can compile to html again, with "catala --language=en Html hello.catala_en".
-
-Or you can tell Catala to figure out the value of a scope the program defines. Run "catala -s Say100 --language=en Interpret hello.catala_en". You should see 
-messages that "a_number = 100".
-
-In this modified command, note that "Html" has been replaced with "Interpret". This means we want the compiler to actually run the code we've written.
-And we need to tell the compiler which scope we want it to try to execute. In this simple example, there is only one scope.
-
-
 ### [Article 2]
 
 ```catala 
