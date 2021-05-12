@@ -26,7 +26,7 @@ Catala is a young project, and still a work in progress, but it implements sever
 
 Installing the software you need to run Catala is fairly straightforward. There are either some rough edges, or its assumed that users are more familiar with the Ocaml programming environment than I am.
 
-Catala requires opam, the package manager for the language Ocaml to be installed. So head over to [ocaml.org](https://ocaml.org) to get opam installed.
+Catala requires opam, the package manager for the language Ocaml to be installed. If you're trying out Catala, head over to [ocaml.org](https://ocaml.org) to get opam installed.
 
 Next, install Catala, following the instructions on [github.com/CatalaLang/catala](https://github.com/CatalaLang/catala).
 
