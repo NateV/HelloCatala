@@ -57,15 +57,15 @@ An Article can contain human-readable text as well as code blocks. Human-readabl
 
 Code blocks begin with three backticks and the word "catala", and close with three backticks (just like Markdown). Comments in code blocks start with hash-marks.
 
-```
+````
 And now for some code:
 
-\`\`\`catala
+```catala
 # This is a comment.
-\`\`\`
+```
 
 That was the code.
-```
+````
 
 At this point, you should tell the compiler to "knit" the file into a display format such as HTML. This way the compiler will verify the syntax even though there's no "code" yet. (Remember, the whole text, including the parts just for humans to read, is the program, and has to follow Catala's syntax rules.)
 
